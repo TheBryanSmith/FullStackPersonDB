@@ -28,15 +28,25 @@ public class PersonService {
   }
 
   public List<Person> readAll(){
-      Iterable<Person> myFolks = personRepository.findAll()
-        List<Person> personList = new ArrayList<>();
+     final Iterable<Person> myFolks = personRepository.findAll();
+       final List<Person> personList = new ArrayList<>();
         myFolks.forEach(personList::add);
         return personList;
       }
+
+
+  public Person update(Long id, Person newPersonData){
+   final Person personInDatabase = this.readById(id);
+   personInDatabase.setId(personInDatabase.getId());
+    personInDatabase.setFirstName(personInDatabase.getFirstName());
+    personInDatabase.setLastName(personInDatabase.getLastName());
+    return personRepository.save(personInDatabase);
   }
 
-  public update(Long id,Person newPersonData){
-
+  public Person deleteById(Long id){
+        final Person personToBeDeleted = this.readById(id);
+        personRepository.delete(personToBeDeleted);
+        return personToBeDeleted;
   }
 
-}
+  }
