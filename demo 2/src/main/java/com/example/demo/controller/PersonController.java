@@ -29,14 +29,14 @@ public class PersonController {
         return responseEntity;
     }
 
-    @RequestMapping(path = "/read{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/read/{id}", method = RequestMethod.GET)
     public ResponseEntity<Person> read(@PathVariable Long id){
         final Person responseBody = personService.readById(id);
         final ResponseEntity<Person> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
         return responseEntity;
     }
 
-    @RequestMapping(path = "/read-all",method = RequestMethod.GET)
+    @RequestMapping(path = "/read-all", method = RequestMethod.GET)
     public ResponseEntity<List<Person>> readAll(){
         final List<Person> responseBody = personService.readAll();
         final ResponseEntity<List<Person>> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
@@ -44,7 +44,7 @@ public class PersonController {
     }
 
 
-    @RequestMapping(path = "/update/{id}" ,method = RequestMethod.PUT)
+    @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Person> update(@PathVariable Long id,@RequestBody Person person){
         final Person responseBody = personService.update(id,person);
         final ResponseEntity<Person> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
