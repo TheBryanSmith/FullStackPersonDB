@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/person-controller")
 public class PersonController {
@@ -33,8 +35,28 @@ public class PersonController {
         return responseEntity;
     }
 
+    @RequestMapping(path = "/read-all",method = RequestMethod.GET)
+    public ResponseEntity<List<Person>> readAll(){
+        final List<Person> responseBody = personService.readAll();
+        final ResponseEntity<List<Person>> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
+        return responseEntity;
+    }
+
+
     @RequestMapping(path = "/update/{id}" ,method = RequestMethod.PUT)
-    public ResponseEntity<Person> update()
+    public ResponseEntity<Person> update(@PathVariable Long id,@RequestBody Person person){
+        final Person responseBody = personService.update(id,person);
+        final ResponseEntity<Person> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @RequestMapping(path = "/delete{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Person> remove(@PathVariable Long id){
+        final Person responseBody = personService.deleteById(id);
+        final ResponseEntity<Person> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
+        return responseEntity;
+    }
+
 
 
 
