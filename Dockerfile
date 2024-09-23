@@ -15,7 +15,7 @@ RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Final Stage
-FROM openjdk:8-jdk-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 # Expose the application port
 EXPOSE 8080
