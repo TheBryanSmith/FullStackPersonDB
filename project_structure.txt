@@ -1,0 +1,107 @@
+.
+├── .git
+│   ├── COMMIT_EDITMSG
+│   ├── HEAD
+│   ├── config
+│   ├── description
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── push-to-checkout.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   ├── dev
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── dev
+│   │               └── main
+│   └── refs
+│       ├── heads
+│       │   ├── dev
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       ├── dev
+│       │       └── main
+│       └── tags
+├── .gitignore
+├── Dockerfile
+├── FullStackPersonDB
+├── HELP.md
+├── README.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── project_structure.txt
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── demo
+│   │   │               ├── DemoApplication.java
+│   │   │               ├── config
+│   │   │               │   └── PersonConfig.java
+│   │   │               ├── controller
+│   │   │               │   └── PersonController.java
+│   │   │               ├── model
+│   │   │               │   └── Person.java
+│   │   │               ├── repository
+│   │   │               │   └── PersonRepository.java
+│   │   │               └── service
+│   │   │                   └── PersonService.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── static
+│   │       │   ├── index.html
+│   │       │   └── service.js
+│   │       └── templates
+│   └── test
+│       ├── java
+│       │   └── com
+│       │       └── example
+│       │           └── demo
+│       │               └── DemoApplicationTests.java
+│       └── resources
+│           └── FullStackPersonDB.postman_collection.json
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   ├── com
+│   │   │   └── example
+│   │   │       └── demo
+│   │   │           ├── DemoApplication.class
+│   │   │           ├── config
+│   │   │           │   └── PersonConfig.class
+│   │   │           ├── controller
+│   │   │           │   └── PersonController.class
+│   │   │           ├── model
+│   │   │           │   └── Person.class
+│   │   │           ├── repository
+│   │   │           │   └── PersonRepository.class
+│   │   │           └── service
+│   │   │               └── PersonService.class
+│   │   └── static
+│   │       ├── index.html
+│   │       └── service.js
+│   └── generated-sources
+│       └── annotations
+└── tree.sh
+
+48 directories, 57 files
