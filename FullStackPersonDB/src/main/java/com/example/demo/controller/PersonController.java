@@ -51,7 +51,7 @@ public class PersonController {
         return responseEntity;
     }
 
-    @RequestMapping(path = "/delete{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Person> remove(@PathVariable Long id){
         final Person responseBody = personService.deleteById(id);
         final ResponseEntity<Person> responseEntity = new ResponseEntity<>(responseBody,HttpStatus.OK);
