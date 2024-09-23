@@ -1,29 +1,30 @@
 # Build Stage
 FROM openjdk:8-jdk-alpine as build
 WORKDIR /workspace/app
+
+# Copy Maven wrapper and project files
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
+
+# Ensure Maven wrapper has execute permission
 RUN chmod +x ./mvnw
-RUN ./mvnw install -DskipTests
-RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+
+# Run Maven to build the project and skip tests
+RUN ./mvnw clean package -DskipTests
 
 # Final Stage
 FROM openjdk:8-jdk-alpine
 
-# Explicitly Expose desired port
+# Expose the application port
 EXPOSE 8080
 
 # Set up volumes and arguments
 VOLUME /tmp
-ARG DEPENDENCY=/workspace/app/target/dependency
 
-# Copy dependencies and classes
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+# Copy the generated JAR from the build stage
+COPY --from=build /workspace/app/target/*.jar app.jar
 
-# Entry Point for Starting the Application
-# ENTRYPOINT ["java", "-cp", "app:app/lib/*", "com.example.demo.DemoApplication"]
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Entry Point for running the application
+ENTRYPOINT ["java", "-jar", "/app.jar"]
